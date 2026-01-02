@@ -16,8 +16,7 @@
       <div>
         <h1>ESG Score vs Controversies</h1>
         <p class="subtitle">
-          Una mini-dashboard per mostrare approccio analitico ESG: scoring, proxy di controversie e limiti dei dati.
-        </p>
+A mini dashboard designed to showcase an analytical ESG approach, combining ESG scoring, controversy proxies, and data limitations.        </p>
       </div>
       <div class="header-links">
         <a href="#" id="cvLink" class="btn">CV (PDF)</a>
@@ -31,12 +30,12 @@
     <section class="card">
       <div class="controls">
         <div class="control">
-          <label for="sectorSelect">Settore</label>
+          <label for="sectorSelect">Sector</label>
           <select id="sectorSelect"></select>
         </div>
 
         <div class="control">
-          <label for="regionSelect">Regione</label>
+          <label for="regionSelect">Region</label>
           <select id="regionSelect"></select>
         </div>
 
@@ -46,7 +45,7 @@
         </div>
 
         <div class="control">
-          <label for="maxCont">Controversie max</label>
+          <label for="maxCont">Controversies max</label>
           <input id="maxCont" type="number" step="1" min="0" value="50" />
         </div>
 
@@ -66,7 +65,7 @@
     <section class="card">
       <h2>Dataset</h2>
       <p class="muted">
-        Dati in <code>data/companies.csv</code>. Puoi sostituirli con i tuoi (stesse colonne).
+        Dati in <code>data/companies.csv</code>. You can substitue with yours (same coloumns).
       </p>
       <div class="table-wrap">
         <table id="dataTable">
@@ -79,30 +78,27 @@
     <section class="card">
       <h2>Methodology</h2>
       <p>
-        L’obiettivo è confrontare un indicatore di performance ESG (<strong>ESG Score</strong>, scala 0–100)
-        con un proxy di rischio reputazionale/operativo (<strong>Controversies</strong>, conteggio eventi).
-        Questa vista non pretende di “misurare la sostenibilità vera”, ma mostra un modo trasparente di
-        ragionare su metriche, comparabilità e trade-off.
+  This dashboard is intended as an exploratory tool rather than a definitive ranking,
+  highlighting how ESG scores and controversy data can be jointly interpreted.
       </p>
 
-      <h3>Come leggere il grafico</h3>
+      <h3>How to read the chart</h3>
       <ul>
-        <li><strong>Asse X</strong>: ESG Score (più alto = migliore performance secondo la metrica scelta).</li>
-        <li><strong>Asse Y</strong>: numero di controversie (più alto = più eventi segnalati).</li>
-        <li><strong>Quadranti</strong>: ideale in basso a destra (alto ESG, poche controversie).</li>
+        <li><strong>X-axis</strong>: ESG Score (higher values indicate better performance according to the selected metric).</li>
+        <li><strong>Y-axis</strong>: Number of controversies (higher values indicate more reported events).</li>
+        <li><strong>Quadrants</strong>: The ideal position is the bottom-right quadrant (high ESG score, low number of controversies).</li>
       </ul>
 
-      <h3>Limitations (importante)</h3>
+      <h3>Limitations (important)</h3>
       <ul>
-        <li>Le metriche ESG non sono pienamente standardizzate: rating diversi possono dare risultati diversi.</li>
-        <li>Le “controversie” dipendono anche da copertura mediatica, reporting e definizioni di evento.</li>
-        <li>Per un’analisi professionale servirebbero controlli per dimensione, settore, geografia e time window.</li>
+        <li>ESG metrics are not fully standardized; different rating providers may produce different results.</li>
+        <li>Controversy data are influenced by media coverage, disclosure practices, and event definitions.</li>
+        <li>A professional analysis would require controls for firm size, sector, geography, and the chosen time window.</li>
       </ul>
 
       <h2>About</h2>
       <p class="muted">
-        Inserisci qui 4–6 righe su di te (Master, interessi ESG, strumenti: Excel/Python/Power BI, ecc.).
-        Tono: chiaro, diretto, non “marketing”.
+        Master’s student in International Economics & Sustainable Development (University of Groningen), with a focus on ESG analysis and sustainability reporting. Interested in understanding the relationship between ESG performance, operational risk, and corporate controversies using transparent, data-driven approaches. Experience with ESG metrics, company disclosures, and basic data visualization tools..
       </p>
     </section>
   </main>

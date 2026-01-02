@@ -147,10 +147,11 @@ function renderInsights(data) {
   const corr = pearsonCorr(data.map(d => d.ESG_Score), data.map(d => d.Controversies));
 
   const items = [
-    `Miglior profilo (alto ESG, basse controversie): ${top.Company} — ESG ${top.ESG_Score}, Cont ${top.Controversies}.`,
-    `Caso più “controverso” nel filtro: ${risky.Company} — Cont ${risky.Controversies} (ESG ${risky.ESG_Score}).`,
-    `Correlazione (ESG vs Controversies) nel campione filtrato: ${formatNumber(corr, 2)} (indicativa, campione piccolo).`
-  ];
+  `Best overall profile (high ESG, low controversies): ${top.Company} — ESG score ${top.ESG_Score}, controversies ${top.Controversies}.`,
+  `Most controversial case in the filtered sample: ${risky.Company} — ${risky.Controversies} controversies (ESG score ${risky.ESG_Score}).`,
+  `Correlation between ESG score and controversies in the filtered sample: ${formatNumber(corr, 2)} (illustrative, small sample size).`
+];
+
 
   items.forEach(t => {
     const li = document.createElement("li");

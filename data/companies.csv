@@ -1,0 +1,16 @@
+Company,Ticker,Sector,Region,ESG_Score,Controversies,MarketCap_USD_B
+Natura &Co,NTCO,Consumer Staples,LatAm,78,4,3.2
+Ørsted,ORSTED,Utilities,Europe,86,3,18.4
+Schneider Electric,SU,Industrials,Europe,82,6,110.0
+Unilever,ULVR,Consumer Staples,Europe,79,9,150.0
+Microsoft,MSFT,Technology,North America,74,8,2900.0
+Salesforce,CRM,Technology,North America,77,5,260.0
+Iberdrola,IBE,Utilities,Europe,81,7,85.0
+Novo Nordisk,NOVO,Health Care,Europe,80,6,500.0
+Patagonia (proxy),PRIVATE,Consumer Discretionary,North America,84,1,0.5
+Tesla,TSLA,Consumer Discretionary,North America,60,18,800.0
+Shell,SHEL,Energy,Europe,55,22,200.0
+TotalEnergies,TTE,Energy,Europe,57,19,140.0
+Nestlé,NESN,Consumer Staples,Europe,68,14,320.0
+AstraZeneca,AZN,Health Care,Europe,73,7,230.0
+Danone,BN,Consumer Staples,Europe,76,8,45.0

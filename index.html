@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ESG Score vs Controversies — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Plotly (CDN) -->
+  <script src="https://cdn.plot.ly/plotly-2.30.0.min.js"></script>
+</head>
+
+<body>
+  <header class="container">
+    <div class="header-row">
+      <div>
+        <h1>ESG Score vs Controversies</h1>
+        <p class="subtitle">
+          Una mini-dashboard per mostrare approccio analitico ESG: scoring, proxy di controversie e limiti dei dati.
+        </p>
+      </div>
+      <div class="header-links">
+        <a href="#" id="cvLink" class="btn">CV (PDF)</a>
+        <a href="#" id="linkedinLink" class="btn secondary">LinkedIn</a>
+        <a href="#" id="githubLink" class="btn secondary">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="controls">
+        <div class="control">
+          <label for="sectorSelect">Settore</label>
+          <select id="sectorSelect"></select>
+        </div>
+
+        <div class="control">
+          <label for="regionSelect">Regione</label>
+          <select id="regionSelect"></select>
+        </div>
+
+        <div class="control">
+          <label for="minESG">ESG min</label>
+          <input id="minESG" type="number" step="1" min="0" max="100" value="0" />
+        </div>
+
+        <div class="control">
+          <label for="maxCont">Controversie max</label>
+          <input id="maxCont" type="number" step="1" min="0" value="50" />
+        </div>
+
+        <div class="control buttons">
+          <button id="resetBtn" class="btn">Reset</button>
+        </div>
+      </div>
+
+      <div id="chart" class="chart"></div>
+
+      <div class="insights">
+        <h2>Key insights (auto)</h2>
+        <ul id="insightsList"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Dataset</h2>
+      <p class="muted">
+        Dati in <code>data/companies.csv</code>. Puoi sostituirli con i tuoi (stesse colonne).
+      </p>
+      <div class="table-wrap">
+        <table id="dataTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Methodology</h2>
+      <p>
+        L’obiettivo è confrontare un indicatore di performance ESG (<strong>ESG Score</strong>, scala 0–100)
+        con un proxy di rischio reputazionale/operativo (<strong>Controversies</strong>, conteggio eventi).
+        Questa vista non pretende di “misurare la sostenibilità vera”, ma mostra un modo trasparente di
+        ragionare su metriche, comparabilità e trade-off.
+      </p>
+
+      <h3>Come leggere il grafico</h3>
+      <ul>
+        <li><strong>Asse X</strong>: ESG Score (più alto = migliore performance secondo la metrica scelta).</li>
+        <li><strong>Asse Y</strong>: numero di controversie (più alto = più eventi segnalati).</li>
+        <li><strong>Quadranti</strong>: ideale in basso a destra (alto ESG, poche controversie).</li>
+      </ul>
+
+      <h3>Limitations (importante)</h3>
+      <ul>
+        <li>Le metriche ESG non sono pienamente standardizzate: rating diversi possono dare risultati diversi.</li>
+        <li>Le “controversie” dipendono anche da copertura mediatica, reporting e definizioni di evento.</li>
+        <li>Per un’analisi professionale servirebbero controlli per dimensione, settore, geografia e time window.</li>
+      </ul>
+
+      <h2>About</h2>
+      <p class="muted">
+        Inserisci qui 4–6 righe su di te (Master, interessi ESG, strumenti: Excel/Python/Power BI, ecc.).
+        Tono: chiaro, diretto, non “marketing”.
+      </p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span class="muted">Built with GitHub Pages · Static dashboard · Plotly</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

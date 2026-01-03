@@ -76,64 +76,7 @@ renderTable(filtered);
 function renderChart(data) {
   const x = data.map(d => d.ESG_Score);
   const y = data.map(d => d.Controversies);
-  const text = data.map(d => `${d.Company} 
-  function renderChartNormalized(data) {
-  // Controversy intensity = controversies per $1B market cap
-  // (If market cap is missing/0, we skip the point to avoid nonsense.)
-  const cleaned = data.filter(d => isFinite(d.MarketCap_USD_B) && d.MarketCap_USD_B > 0);
-
-  const x = cleaned.map(d => d.ESG_Score);
-  const y = cleaned.map(d => d.Controversies / d.MarketCap_USD_B);
-  const text = cleaned.map(d => `${d.Company} (${d.Ticker})`);
-
-  // Bubble size still by market cap (soft scale)
-  const sizes = cleaned.map(d => Math.max(8, Math.sqrt(Math.max(d.MarketCap_USD_B, 0.1)) * 3));
-
-  // Color by sector (categorical)
-  const sectors = uniq(cleaned.map(d => d.Sector));
-  const colorMap = new Map(sectors.map((s, i) => [s, i]));
-  const colors = cleaned.map(d => colorMap.get(d.Sector));
-
-  const trace = {
-    type: "scatter",
-    mode: "markers",
-    x, y,
-    text,
-    hovertemplate:
-      "<b>%{text}</b><br>" +
-      "ESG: %{x}<br>" +
-      "Controversy intensity: %{y:.3f} per $1B Market Cap<extra></extra>",
-    marker: {
-      size: sizes,
-      color: colors,
-      opacity: 0.9
-    }
-  };
-
-  const layout = {
-    paper_bgcolor: "rgba(0,0,0,0)",
-    plot_bgcolor: "rgba(0,0,0,0)",
-    margin: {l: 70, r: 10, t: 10, b: 60},
-    xaxis: {
-      title: "ESG Score (0–100)",
-      range: [0, 100],
-      gridcolor: "rgba(255,255,255,0.06)",
-      zerolinecolor: "rgba(255,255,255,0.08)"
-    },
-    yaxis: {
-      title: "Controversy intensity (Controversies per $1B Market Cap)",
-      gridcolor: "rgba(255,255,255,0.06)",
-      zerolinecolor: "rgba(255,255,255,0.08)"
-    },
-    font: {color: "#e6edf3"},
-    showlegend: false
-  };
-
-  const config = {responsive: true, displayModeBar: false};
-
-  Plotly.newPlot("chart2", [trace], layout, config);
-}
-(${d.Ticker})`);
+  const text = data.map(d => `${d.Company} (${d.Ticker})`);
 
   // Bubble size by market cap (soft scale)
   const sizes = data.map(d => Math.max(8, Math.sqrt(Math.max(d.MarketCap_USD_B, 0.1)) * 3));
@@ -182,6 +125,63 @@ function renderChart(data) {
 
   Plotly.newPlot("chart", [trace], layout, config);
 }
+
+function renderChartNormalized(data) {
+  // Controversy intensity = controversies per $1B market cap
+  // If market cap is missing/0, skip to avoid nonsense.
+  const cleaned = data.filter(d => isFinite(d.MarketCap_USD_B) && d.MarketCap_USD_B > 0);
+
+  const x = cleaned.map(d => d.ESG_Score);
+  const y = cleaned.map(d => d.Controversies / d.MarketCap_USD_B);
+  const text = cleaned.map(d => `${d.Company} (${d.Ticker})`);
+
+  const sizes = cleaned.map(d => Math.max(8, Math.sqrt(Math.max(d.MarketCap_USD_B, 0.1)) * 3));
+
+  const sectors = uniq(cleaned.map(d => d.Sector));
+  const colorMap = new Map(sectors.map((s, i) => [s, i]));
+  const colors = cleaned.map(d => colorMap.get(d.Sector));
+
+  const trace = {
+    type: "scatter",
+    mode: "markers",
+    x, y,
+    text,
+    hovertemplate:
+      "<b>%{text}</b><br>" +
+      "ESG: %{x}<br>" +
+      "Controversy intensity: %{y:.3f} per $1B Market Cap<extra></extra>",
+    marker: {
+      size: sizes,
+      color: colors,
+      opacity: 0.9
+    }
+  };
+
+  const layout = {
+    paper_bgcolor: "rgba(0,0,0,0)",
+    plot_bgcolor: "rgba(0,0,0,0)",
+    margin: {l: 70, r: 10, t: 10, b: 60},
+    xaxis: {
+      title: "ESG Score (0–100)",
+      range: [0, 100],
+      gridcolor: "rgba(255,255,255,0.06)",
+      zerolinecolor: "rgba(255,255,255,0.08)"
+    },
+    yaxis: {
+      title: "Controversy intensity (Controversies per $1B Market Cap)",
+      gridcolor: "rgba(255,255,255,0.06)",
+      zerolinecolor: "rgba(255,255,255,0.08)"
+    },
+    font: {color: "#e6edf3"},
+    showlegend: false
+  };
+
+  const config = {responsive: true, displayModeBar: false};
+
+  Plotly.newPlot("chart2", [trace], layout, config);
+}
+
+  
 
 function renderInsights(data) {
   elInsights.innerHTML = "";

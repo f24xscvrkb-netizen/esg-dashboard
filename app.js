@@ -270,14 +270,15 @@ function formatNumber(x, digits=2) {
 }
 
 function wireLinks() {
-  // Metti qui i tuoi link reali
-  document.getElementById("cvLink").href = "./CV.pdf";       // se aggiungi CV.pdf in repo
-  document.getElementById("linkedinLink").href = "https://www.linkedin.com/";
-  document.getElementById("githubLink").href = "https://github.com/";
-  document.getElementById("cvLink").target = "_blank";
-  document.getElementById("linkedinLink").target = "_blank";
-  document.getElementById("githubLink").target = "_blank";
+  const cv = document.getElementById("cvLink");
+  const li = document.getElementById("linkedinLink");
+  const gh = document.getElementById("githubLink");
+
+  if (cv) { cv.href = "./CV.pdf"; cv.target = "_blank"; }
+  if (li) { li.href = "https://www.linkedin.com/"; li.target = "_blank"; }
+  if (gh) { gh.href = "https://github.com/"; gh.target = "_blank"; }
 }
+
 
 async function init() {
   wireLinks();

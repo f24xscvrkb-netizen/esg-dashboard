@@ -118,3 +118,13 @@ tbody td{
 tbody tr:hover{background: rgba(255,255,255,0.03);}
 
 .footer{padding-bottom: 30px;}
+select {
+  background-color: #0b0f14;
+  color: #e6edf3;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+select option {
+  background-color: #0b0f14;
+  color: #e6edf3;
+}
